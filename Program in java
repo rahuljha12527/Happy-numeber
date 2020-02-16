@@ -1,0 +1,39 @@
+//Given a number n, find if it is a happy number or not. A
+//number is called happy if a sequence of steps leads to 1 where in each sequence of step the number is
+//replaced by sum of square of its digit, i.e., if we start with Happy Number and keep replacing it with digits square sum, we reach 1.
+
+
+
+
+
+
+public class Solution {
+    public static  int numSquareSum(int n){
+        int squareSum=0;
+        while(n!=0){
+            squareSum+=(n%10)*(n%10);
+            n/=10;
+        }
+        System.out.println(squareSum);
+        return squareSum;
+    }
+    
+	public static boolean findHappyNumber(int n) {
+		
+	
+        int slow,fast;
+        
+        slow=fast=n;
+        
+        do{
+            slow=numSquareSum(slow);
+            fast=numSquareSum(numSquareSum(fast));    
+        }  while(slow!=fast);   
+        
+        
+      
+        
+        return (fast==1);
+        
+	}
+}
